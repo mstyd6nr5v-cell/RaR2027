@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock am Ring 2027 – Countdown & Wetter</title>
+    
+    <!-- Meta-Tags -->
+    <meta name="description" content="Der inoffizielle Countdown & Live-Wetter für das Rock am Ring Festival 2027!">
+    <meta property="og:title" content="Rock am Ring 2027 Countdown">
+    <meta property="og:description" content="Wie lange noch bis zum nächsten Rock am Ring? Live-Wetter & Countdown!">
+    <meta name="theme-color" content="#0d0d0d">
+
+    <!-- Emoji Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤘</text></svg>">
+
+    <style>
+        :root {
+            --bg-color: #0b0b0d;
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-color: #ff2a5f;
+            --accent-glow: rgba(255, 42, 95, 0.4);
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(circle at 50% 15%, rgba(255, 42, 95, 0.18), transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(0, 150, 255, 0.08), transparent 40%);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            background: rgba(18, 18, 22, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Logo Styling */
+        .logo-container {
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            max-width: 280px;
+            height: auto;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.02);
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 42, 95, 0.15);
+            color: var(--accent-color);
+            border: 1px solid rgba(255, 42, 95, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .location {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 24px;
+        }
+
+        /* Countdown Grid */
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        .time-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 16px 8px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .time-card:hover {
+            border-color: rgba(255, 42, 95, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-main);
+            font-variant-numeric: tabular-nums;
+            line-height: 1.1;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 6px;
+        }
+
+        /* Wetter Widget Card */
+        .weather-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 28px;
+        }
+
+        .weather-title {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: left;
+        }
+
+        .weather-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Live Status Text */
+        .live-status {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            text-shadow: 0 0 15px var(--accent-glow);
+            padding: 20px 0;
+            display: none;
+        }
+
+        /* Call to Action Button */
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px var(--accent-glow);
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #e02250;
+            transform: scale(1.03);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .countdown-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .logo {
+                max-width: 220px;
+            }
+            .number {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Official Logo -->
+        <div class="logo-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Rock_am_Ring_logo.svg" alt="Rock am Ring Logo" class="logo">
+        </div>
+
+        <span class="badge">Inoffizieller Countdown</span>
+        <p class="location">Nürburgring • 04. – 06. Juni 2027</p>
+
+        <!-- Live-Wetter Card -->
+        <div class="weather-card">
+            <div class="weather-title">
+                ⛅ <strong>Wetter am Nürburgring</strong><br>
+                <small>Aktuelle Bedingungen</small>
+            </div>
+            <div class="weather-info" id="weather">
+                <span id="weather-text">Lade Wetter...</span>
+            </div>
+        </div>
+
+        <!-- Countdown Grid -->
+        <div class="countdown-grid" id="countdown">
+            <div class="time-card">
+                <div class="number" id="days">00</div>
+                <div class="label">Tage</div>
+            </div>
+            <div class="time-card">
+                <div class="number" id="hours">00</div>
+                <div class="label">Stunden</div>
+            </div>
+            <div class="time-card">
+                <div class="number" id="minutes">00</div>
+                <div class="label">Minuten</div>
+            </div>
+            <div class="time-card">
+                <div class="number" id="seconds">00</div>
+                <div class="label">Sekunden</div>
+            </div>
+        </div>
+
+        <!-- Status bei Ablauf -->
+        <div class="live-status" id="live-message">
+            🔥 Das Festival läuft bereits! 🔥
+        </div>
+
+        <a href="https://www.rock-am-ring.com" target="_blank" rel="noopener noreferrer" class="btn">
+            Offizielle Website
+        </a>
+    </div>
+
+    <script>
+        // --- Countdown Logik ---
+        const targetDate = new Date("2027-06-04T12:00:00").getTime();
+
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+        const countdownGrid = document.getElementById("countdown");
+        const liveMessage = document.getElementById("live-message");
+
+        function updateCountdown() {
+            const now = Date.now();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                countdownGrid.style.display = "none";
+                liveMessage.style.display = "block";
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days;
+            hoursEl.textContent = String(hours).padStart(2, '0');
+            minutesEl.textContent = String(minutes).padStart(2, '0');
+            secondsEl.textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // --- Wetter Logik (Open-Meteo API für Nürburgring) ---
+        async function fetchWeather() {
+            const weatherText = document.getElementById("weather-text");
+            // Koordinaten Nürburgring: Lat 50.3315, Lon 6.9475
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=50.3315&longitude=6.9475&current_weather=true";
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const temp = Math.round(data.current_weather.temperature);
+                const weatherCode = data.current_weather.weathercode;
+                
+                // Icon basierend auf WMO Weather Code
+                let icon = "🌡️";
+                if (weatherCode === 0) icon = "☀️"; // Klar
+                else if (weatherCode >= 1 && weatherCode <= 3) icon = "⛅"; // Leicht bewölkt
+                else if (weatherCode >= 45 && weatherCode <= 48) icon = "🌫️"; // Nebel
+                else if (weatherCode >= 51 && weatherCode <= 67) icon = "🌧️"; // Regen
+                else if (weatherCode >= 71 && weatherCode <= 77) icon = "❄️"; // Schnee
+                else if (weatherCode >= 95) icon = "⛈️"; // Gewitter
+
+                weatherText.innerHTML = `${icon} ${temp} °C`;
+            } catch (error) {
+                weatherText.textContent = "Wetter n.a.";
+            }
+        }
+
+        fetchWeather();
+    </script>
+</body>
+</html>

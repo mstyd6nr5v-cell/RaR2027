@@ -59,16 +59,16 @@
 
         /* Logo Styling */
         .logo-container {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: center;
         }
 
         .logo {
             width: 100%;
-            max-width: 320px;
+            max-width: 340px;
             height: auto;
-            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2));
             transition: transform 0.3s ease;
         }
 
@@ -195,7 +195,7 @@
                 gap: 10px;
             }
             .logo {
-                max-width: 240px;
+                max-width: 250px;
             }
             .number {
                 font-size: 1.8rem;
@@ -206,25 +206,12 @@
 <body>
 
     <div class="container">
-        <!-- Fest eingebettetes Rock am Ring Logo -->
+        <!-- Offizielles Rock am Ring Logo -->
         <div class="logo-container">
-            <svg class="logo" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
-                <style>
-                    .st-white { fill: #FFFFFF; }
-                    .st-red { fill: #FF2A5F; }
-                </style>
-                <g>
-                    <!-- ROCK -->
-                    <path class="st-white" d="M20,20 h40 c15,0 25,8 25,22 c0,10 -7,18 -18,20 l20,38 h-22 l-17,-34 h-13 v34 h-15 V20 z M35,35 v20 h22 c6,0 10,-3 10,-10 c0,-7 -4,-10 -10,-10 h-22 z"/>
-                    <path class="st-white" d="M100,60 c0,-22 18,-40 40,-40 c22,0 40,18 40,40 c0,22 -18,40 -40,40 c-22,0 -40,-18 -40,-40 z M162,60 c0,-12 -9,-22 -22,-22 c-13,0 -22,10 -22,22 c0,12 9,22 22,22 c13,0 22,-10 22,-22 z"/>
-                    <path class="st-white" d="M255,38 h-22 v62 h-18 V20 h40 c18,0 28,9 28,24 c0,12 -7,20 -18,23 l20,33 h-22 l-17,-31 z M233,35 h18 c7,0 11,-4 11,-10 c0,-6 -4,-10 -11,-10 h-18 v20 z"/>
-                    <!-- AM -->
-                    <path class="st-red" d="M295,90 l18,-35 h22 l-22,45 h-18 z"/>
-                    <path class="st-red" d="M335,90 l18,-35 h22 l-22,45 h-18 z"/>
-                    <!-- RING -->
-                    <path class="st-white" d="M380,20 h18 v28 l22,-28 h22 l-26,32 l28,48 h-22 l-20,-36 v36 h-18 V20 z"/>
-                </g>
-            </svg>
+            <img class="logo" 
+                 src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/1f918.png"
+                 srcset="https://commons.wikimedia.org/wiki/Special:FilePath/Rock_am_Ring_Logo_2022.svg" 
+                 alt="Rock am Ring Official Logo">
         </div>
 
         <span class="badge">Inoffizieller Countdown</span>

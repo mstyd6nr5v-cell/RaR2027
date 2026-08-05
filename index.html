@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock am Ring 2027 – Countdown & Wetter</title>
     
-    <!-- Meta-Tags -->
+    <!-- Meta-Tags für SEO & Social Media Preview -->
     <meta name="description" content="Der inoffizielle Countdown & Live-Wetter für das Rock am Ring Festival 2027!">
     <meta property="og:title" content="Rock am Ring 2027 Countdown">
     <meta property="og:description" content="Wie lange noch bis zum nächsten Rock am Ring? Live-Wetter & Countdown!">
     <meta name="theme-color" content="#0d0d0d">
 
-    <!-- Emoji Favicon -->
+    <!-- Emoji als Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤘</text></svg>">
 
     <style>
@@ -60,17 +60,20 @@
         /* Logo Styling */
         .logo-container {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
         }
 
         .logo {
-            max-width: 280px;
+            width: 100%;
+            max-width: 320px;
             height: auto;
             filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
             transition: transform 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .badge {
@@ -84,7 +87,7 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
 
         .location {
@@ -192,7 +195,7 @@
                 gap: 10px;
             }
             .logo {
-                max-width: 220px;
+                max-width: 240px;
             }
             .number {
                 font-size: 1.8rem;
@@ -202,22 +205,27 @@
 </head>
 <body>
 
-            <!-- Official Logo (Direkt eingebettet) -->
+    <div class="container">
+        <!-- Fest eingebettetes Rock am Ring Logo -->
         <div class="logo-container">
-            <svg class="logo" viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+            <svg class="logo" viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
                 <style>
-                    .st0{fill:#FFFFFF;}
-                    .st1{fill:#FF2A5F;}
+                    .st-white { fill: #FFFFFF; }
+                    .st-red { fill: #FF2A5F; }
                 </style>
                 <g>
-                    <!-- Schriftzug ROCK AM RING -->
-                    <path class="st0" d="M30 40h45c12 0 20 6 20 17 0 9-6 14-13 16l15 27H78L65 74H48v26H30V40zm18 20h23c4 0 7-2 7-6s-3-6-7-6H48v12zM105 40h55v15h-37v13h32v14h-32v18h-18V40zM170 70c0-18 14-32 32-32s32 14 32 32-14 32-32 32-32-14-32-32zm46 0c0-9-6-16-14-16s-14 7-14 16 6 16 14 16 14-7 14-16zM245 40h50v15h-32v45h-18V40z"/>
-                    <path class="st1" d="M70 115l15-25h20l-20 35h-15zm35 0l15-25h20l-20 35h-15zm80-10h40v10h-40z"/>
-                    <path class="st0" d="M305 105h18v-30l15 30h12l15-30v30h18V55h-22l-17 33-17-33h-22v50zM400 55h-22v50h18V85h15l15 20h22l-20-26c9-3 14-10 14-18 0-11-8-16-22-16zm-4 16v-2h12c3 0 5 1 5 3s-2 3-5 3h-12z"/>
+                    <!-- ROCK -->
+                    <path class="st-white" d="M20,20 h40 c15,0 25,8 25,22 c0,10 -7,18 -18,20 l20,38 h-22 l-17,-34 h-13 v34 h-15 V20 z M35,35 v20 h22 c6,0 10,-3 10,-10 c0,-7 -4,-10 -10,-10 h-22 z"/>
+                    <path class="st-white" d="M100,60 c0,-22 18,-40 40,-40 c22,0 40,18 40,40 c0,22 -18,40 -40,40 c-22,0 -40,-18 -40,-40 z M162,60 c0,-12 -9,-22 -22,-22 c-13,0 -22,10 -22,22 c0,12 9,22 22,22 c13,0 22,-10 22,-22 z"/>
+                    <path class="st-white" d="M255,38 h-22 v62 h-18 V20 h40 c18,0 28,9 28,24 c0,12 -7,20 -18,23 l20,33 h-22 l-17,-31 z M233,35 h18 c7,0 11,-4 11,-10 c0,-6 -4,-10 -11,-10 h-18 v20 z"/>
+                    <!-- AM -->
+                    <path class="st-red" d="M295,90 l18,-35 h22 l-22,45 h-18 z"/>
+                    <path class="st-red" d="M335,90 l18,-35 h22 l-22,45 h-18 z"/>
+                    <!-- RING -->
+                    <path class="st-white" d="M380,20 h18 v28 l22,-28 h22 l-26,32 l28,48 h-22 l-20,-36 v36 h-18 V20 z"/>
                 </g>
             </svg>
         </div>
-
 
         <span class="badge">Inoffizieller Countdown</span>
         <p class="location">Nürburgring • 04. – 06. Juni 2027</p>
